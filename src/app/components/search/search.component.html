@@ -3,11 +3,11 @@
     <!-- Basic Search -->
     <div class="mb-3">
       <input
-        type="text"
+        type="search"
         class="form-control"
         placeholder="Search..."
         [(ngModel)]="searchQuery"
-        (input)="multiSearch()"
+        (ngModelChange)="multiSearch()"
       />
     </div>
   
@@ -30,13 +30,13 @@
             type="date"
             id="startDate"
             class="form-control"
-            [(ngModel)]="filters.startDate"
+            [(ngModel)]="filters().startDate"
           />
           <input
             type="date"
             id="endDate"
             class="form-control"
-            [(ngModel)]="filters.endDate"
+            [(ngModel)]="filters().endDate"
           />
         </div>
       </div>
@@ -47,7 +47,7 @@
         <select
           id="categorySelect"
           class="form-select"
-          [(ngModel)]="filters.category"
+          [(ngModel)]="filters().category"
         >
           <option *ngFor="let category of categories" [value]="category">
             {{ category }}
@@ -81,11 +81,42 @@
   
       <!-- Search Button -->
       <div class="text-end">
-        <button class="btn btn-primary" (click)="multiSearch()">Search</button>
+        <button class="btn btn-primary" (click)="clearFilter()">Clear Filter</button>
+        <button class="btn btn-primary ms-2" (click)="multiSearch()">Search</button>
       </div>
     </div>
 
-    <div *ngIf="tableData?.length > 0">
+    <ng-container [ngTemplateOutlet]="displaytemplate()"></ng-container>
+
+    <ng-template #tablelist>
+      <table class="table table-striped table-bordered">
+        <thead class="table-primary">
+           <tr>
+              <th>Sl.No</th>
+              <th>category</th>
+              <th>startDate</th>
+              <th>endDate</th>
+              <th>tags</th>
+           </tr>
+        </thead>
+        <tbody>
+          
+          <tr *ngFor="let item of tableData(); index as i">
+            <td>{{i + 1}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.startDate}}</td>
+            <td>{{item.endDate}}</td>
+            <td>{{item.tags}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+
+    <ng-template #nodata>
+      <p>No data found</p>
+    </ng-template>
+
+    <!-- <div *ngIf="tableData?.length > 0">
       <table class="table table-striped table-bordered">
         <thead class="table-primary">
            <tr>
@@ -107,5 +138,5 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </div> -->
   
