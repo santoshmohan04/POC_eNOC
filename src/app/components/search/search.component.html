@@ -1,0 +1,88 @@
+
+    <h5> Search and Advanced Searched </h5>
+    <!-- Basic Search -->
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search..."
+        [(ngModel)]="searchQuery"
+        (input)="onSearch()"
+      />
+    </div>
+  
+    <!-- Advanced Search Toggle -->
+    <button
+      class="btn btn-link text-primary"
+      type="button"
+      (click)="toggleAdvancedSearch()"
+    >
+      {{ showAdvanced ? 'Hide Advanced Search' : 'Show Advanced Search' }}
+    </button>
+  
+    <!-- Advanced Search Options -->
+    <div *ngIf="showAdvanced" class="mt-3 border p-3">
+      <!-- Date Range Filter -->
+      <div class="mb-3">
+        <label class="form-label" for="startDate">Date Range:</label>
+        <div class="d-flex gap-2">
+          <input
+            type="date"
+            id="startDate"
+            class="form-control"
+            [(ngModel)]="filters.startDate"
+          />
+          <input
+            type="date"
+            id="endDate"
+            class="form-control"
+            [(ngModel)]="filters.endDate"
+          />
+        </div>
+      </div>
+  
+      <!-- Single Select Dropdown -->
+      <div class="mb-3">
+        <label class="form-label" for="categorySelect">Category:</label>
+        <select
+          id="categorySelect"
+          class="form-select"
+          [(ngModel)]="filters.category"
+          (change)="onSearch()"
+        >
+          <option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </option>
+        </select>
+      </div>
+  
+      <!-- Multiselect Dropdown -->
+      <div class="mb-3">
+        <label class="form-label" for="tagsDropdown">Tags:</label>
+        <div ngbDropdown>
+          <button
+            id="tagsDropdown"
+            ngbDropdownToggle
+            class="btn btn-outline-primary w-100 text-start"
+          >
+            {{ selectedTags.length ? selectedTags.join(', ') : 'Select Tags' }}
+          </button>
+          <div ngbDropdownMenu>
+            <div *ngFor="let tag of tags" class="dropdown-item">
+              <input
+                type="checkbox"
+                [checked]="selectedTags.includes(tag)"
+                (change)="toggleTag(tag)"
+              />
+              <span class="ms-2">{{ tag }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Search Button -->
+      <div class="text-end">
+        <button class="btn btn-primary" (click)="onSearch()">Search</button>
+      </div>
+    </div>
+  
