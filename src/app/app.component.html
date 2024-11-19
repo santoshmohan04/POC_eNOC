@@ -2,20 +2,6 @@
   <div class="my-4 d-flex justify-content-end">
     <app-notification></app-notification>
   </div>
-  <!-- <div class="mt-4">
-    <app-file-upload [allowedFileTypes]="file_formats" [allowMultiple]="true" (filesChanged)="onFilesChanged($event)">
-    </app-file-upload>
-  </div>
-  <div>
-    <app-expand-collapse />
-  </div>
-  <div class="mt-4">
-    <app-type-ahead />
-  </div>
-  <div class="mt-4">
-    <app-search />
-  </div> -->
-
   <div class="d-flex">
     <div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills flex-column" orientation="vertical">
       <ng-container ngbNavItem="file-upload">
