@@ -14,6 +14,9 @@ export class NotificationComponent {
     { id: 1, message: 'Your order has been shipped.' },
     { id: 2, message: 'New comment on your post.' },
     { id: 3, message: 'You have a new follower.' },
+    { id: 4, message: 'You have a new follower.' },
+    { id: 5, message: 'You have a new follower.' },
+    { id: 6, message: 'You have a new follower.' },
   ];
   isDropdownOpen = false;
 

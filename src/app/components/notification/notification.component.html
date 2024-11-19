@@ -11,10 +11,10 @@
     <div ngbDropdownMenu class="notification-dropdown">
         <h6 class="dropdown-header">Notifications</h6>
         <div *ngIf="notifications.length; else noNotifications">
-            <div *ngFor="let notification of notifications" class="dropdown-item d-flex justify-content-between">
+            <div *ngFor="let notification of notifications | slice:3" class="dropdown-item d-flex justify-content-between">
                 <span>{{ notification.message }}</span>
             </div>
-            <button class="btn btn-sm btn-link text-primary" (click)="handleMore()">More</button>
+            <button class="btn btn-sm btn-link text-primary" (click)="handleMore()" *ngIf="notifications.length > 3">More</button>
         </div>
         <ng-template #noNotifications>
             <div class="dropdown-item text-muted">No notifications</div>
