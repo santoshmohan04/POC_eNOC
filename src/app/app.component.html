@@ -1,2 +1,13 @@
 <app-file-upload [allowedFileTypes]="'.png,.jpg,.jpeg'" [allowMultiple]="true"
   (filesChanged)="onFilesChanged($event)"></app-file-upload>
+<div class="container">
+  <div>
+    <app-expand-collapse />
+  </div>
+  <div class="mt-4" >
+    <app-type-ahead />
+  </div>
+  <div class="mt-4">
+    <app-search />
+  </div>
+</div>
