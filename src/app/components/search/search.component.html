@@ -7,7 +7,7 @@
         class="form-control"
         placeholder="Search..."
         [(ngModel)]="searchQuery"
-        (input)="onSearch()"
+        (input)="multiSearch()"
       />
     </div>
   
@@ -48,7 +48,6 @@
           id="categorySelect"
           class="form-select"
           [(ngModel)]="filters.category"
-          (change)="onSearch()"
         >
           <option *ngFor="let category of categories" [value]="category">
             {{ category }}
