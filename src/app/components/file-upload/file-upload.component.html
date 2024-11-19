@@ -5,7 +5,7 @@
       id="fileInput"
       (change)="handleFileInput($event)"
       [multiple]="allowMultiple"
-      accept=".png,.jpg,.jpeg,.pdf"
+      [attr.accept]="allowedFileTypes.join(',')"
       hidden
     />
     <button type="button" (click)="triggerFileInput()">Choose File(s)</button>

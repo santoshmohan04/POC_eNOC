@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { fileFormats } from '../../data/states';
 
 @Component({
   standalone: true,
@@ -9,7 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   imports: [CommonModule]
 })
 export class FileUploadComponent {
-  @Input() allowedFileTypes = ''; // E.g., ".png,.jpg,.jpeg,.pdf"
+  @Input() allowedFileTypes = []; // E.g., ".png,.jpg,.jpeg,.pdf"
   @Input() allowMultiple = false;
   @Output() filesChanged = new EventEmitter<File[]>();
 
@@ -20,7 +21,7 @@ export class FileUploadComponent {
     const target = event.target as HTMLInputElement;
     const files = target?.files;
     if (files) {
-      const allowedExtensions = ['image/png', 'image/jpeg', 'image/jpg', 'application/pdf'];
+      const allowedExtensions = fileFormats;
       const validFiles: File[] = [];
 
       Array.from(files).forEach((file) => {

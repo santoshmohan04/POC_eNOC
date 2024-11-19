@@ -4,6 +4,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
 import { ExpandCollapseComponent } from './components/expand-collapse/expand-collapse.component';
 import { TypeAheadComponent } from './components/type-ahead/type-ahead.component';
 import { SearchComponent } from './components/search/search.component';
+import { fileFormats } from './data/states';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { SearchComponent } from './components/search/search.component';
 })
 export class AppComponent {
   title = 'enoc';
+  file_formats = fileFormats
   onFilesChanged(files: File[]): void {
     console.log('Uploaded files:', files);
   }
