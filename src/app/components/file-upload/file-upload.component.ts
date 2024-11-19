@@ -10,7 +10,7 @@ import { fileFormats } from '../../data/states';
   imports: [CommonModule]
 })
 export class FileUploadComponent {
-  @Input() allowedFileTypes = []; // E.g., ".png,.jpg,.jpeg,.pdf"
+  @Input() allowedFileTypes:string[] = []; // E.g., ".png,.jpg,.jpeg,.pdf"
   @Input() allowMultiple = false;
   @Output() filesChanged = new EventEmitter<File[]>();
 

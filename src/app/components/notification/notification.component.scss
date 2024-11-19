@@ -1,0 +1,15 @@
+.notification-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.notification-dropdown {
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.dropdown-toggle::after{
+    display: none;
+    }

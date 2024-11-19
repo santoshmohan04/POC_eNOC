@@ -1,1 +1,23 @@
-<p>notification works!</p>
+<div class="notification-container" ngbDropdown (mouseenter)="openDropdown()" (mouseleave)="closeDropdown()"
+    [open]="isDropdownOpen">
+    <!-- Bell Icon with Badge -->
+    <button class="btn btn-light position-relative" ngbDropdownToggle>
+        <i class="bi bi-bell"></i>
+        <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+            {{ notifications.length }}
+        </span>
+    </button>
+    <!-- Dropdown Menu for Notifications -->
+    <div ngbDropdownMenu class="notification-dropdown">
+        <h6 class="dropdown-header">Notifications</h6>
+        <div *ngIf="notifications.length; else noNotifications">
+            <div *ngFor="let notification of notifications" class="dropdown-item d-flex justify-content-between">
+                <span>{{ notification.message }}</span>
+            </div>
+            <button class="btn btn-sm btn-link text-primary" (click)="handleMore()">More</button>
+        </div>
+        <ng-template #noNotifications>
+            <div class="dropdown-item text-muted">No notifications</div>
+        </ng-template>
+    </div>
+</div>

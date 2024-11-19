@@ -5,11 +5,12 @@ import { ExpandCollapseComponent } from './components/expand-collapse/expand-col
 import { TypeAheadComponent } from './components/type-ahead/type-ahead.component';
 import { SearchComponent } from './components/search/search.component';
 import { fileFormats } from './data/states';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FileUploadComponent, ExpandCollapseComponent, TypeAheadComponent, SearchComponent],
+  imports: [RouterOutlet, FileUploadComponent, ExpandCollapseComponent, TypeAheadComponent, SearchComponent, NotificationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

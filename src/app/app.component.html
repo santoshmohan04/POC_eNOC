@@ -1,13 +1,19 @@
-<app-file-upload [allowedFileTypes]="file_formats" [allowMultiple]="true"
-  (filesChanged)="onFilesChanged($event)"></app-file-upload>
 <div class="container">
+  <div class="mt-4">
+    <app-notification></app-notification>
+  </div>
+  <div class="mt-4">
+    <app-file-upload [allowedFileTypes]="file_formats" [allowMultiple]="true"
+      (filesChanged)="onFilesChanged($event)"></app-file-upload>
+  </div>
   <div>
     <app-expand-collapse />
   </div>
-  <div class="mt-4" >
+  <div class="mt-4">
     <app-type-ahead />
   </div>
   <div class="mt-4">
     <app-search />
   </div>
+
 </div>
