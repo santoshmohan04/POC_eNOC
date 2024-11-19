@@ -54,8 +54,7 @@ export class SearchComponent {
   }
 
   onSearch(): void {
-    this.tableData = dataset.filter(item => item.category.toLocaleLowerCase().trim().includes( this.searchQuery.trim() ))
-    
+    this.tableData = this.searchQuery.trim() ? dataset.filter(item => item.category.toLocaleLowerCase().trim().includes( this.searchQuery.trim() )) : []
   }
 
 
