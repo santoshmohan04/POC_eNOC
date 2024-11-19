@@ -1,1 +1,20 @@
-<p>file-upload works!</p>
+<h1>FIle Upload</h1>
+<label for="fileInput" class="upload-label">
+    <input
+      type="file"
+      id="fileInput"
+      (change)="handleFileInput($event)"
+      [multiple]="allowMultiple"
+      accept=".png,.jpg,.jpeg,.pdf"
+      hidden
+    />
+    <button type="button" (click)="triggerFileInput()">Choose File(s)</button>
+  </label>
+  
+  <!-- Custom label to show file names -->
+  <span *ngIf="uploadedFiles.length > 0; else noFileSelected">
+    {{ getUploadedFilesLabel() }}
+    <button type="button" (click)="clearFiles()">Remove Files</button>
+  </span>
+  <ng-template #noFileSelected>No files chosen</ng-template>
+  

@@ -1,0 +1,53 @@
+/* Wrapper for the upload label */
+.upload-label {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    cursor: pointer;
+  
+    /* Button inside label */
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+  
+      &:active {
+        background-color: #003f7f;
+      }
+  
+      &:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+    }
+  
+    /* Custom file name or message */
+    span {
+      font-size: 14px;
+      color: #333;
+    }
+  
+    /* "Remove Files" button */
+    button + button {
+      margin-left: 8px;
+      background-color: #dc3545;
+      &:hover {
+        background-color: #b02a37;
+      }
+    }
+  }
+  
+  /* Hidden input field */
+  input[type="file"] {
+    display: none;
+  }
+  
