@@ -1,20 +1,18 @@
-<h5>File Upload</h5>
-<label for="fileInput" class="upload-label">
-    <input
-      type="file"
-      id="fileInput"
-      (change)="handleFileInput($event)"
-      [multiple]="allowMultiple"
-      [attr.accept]="allowedFileTypes.join(',')"
-      hidden
-    />
+<div class="file-upload">
+  <!-- Display allowed formats -->
+  <p class="accepted-formats">
+    Accepted formats: <strong>{{ getAllowedFormatsDisplay() }}</strong>
+  </p>
+  <label for="fileInput" class="upload-label">
+    <input type="file" id="fileInput" (change)="handleFileInput($event)" [multiple]="allowMultiple"
+      [attr.accept]="allowedFileTypes.join(',')" hidden />
     <button type="button" (click)="triggerFileInput()">Choose File(s)</button>
   </label>
-  
+
   <!-- Custom label to show file names -->
   <span *ngIf="uploadedFiles.length > 0; else noFileSelected">
     {{ getUploadedFilesLabel() }}
     <button type="button" (click)="clearFiles()">Remove Files</button>
   </span>
   <ng-template #noFileSelected>No files chosen</ng-template>
-  
+</div>

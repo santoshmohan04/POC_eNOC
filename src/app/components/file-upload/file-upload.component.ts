@@ -65,4 +65,10 @@ export class FileUploadComponent {
     }
     return 'No files chosen';
   }
+
+  getAllowedFormatsDisplay(): string {
+    return this.allowedFileTypes
+      .map((format) => format.split('/')[1].toUpperCase())
+      .join(', ');
+  }
 }
