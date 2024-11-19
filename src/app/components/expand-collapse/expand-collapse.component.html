@@ -1,1 +1,18 @@
-<p>expand-collapse works!</p>
+<h5> Expand and Collapse Model </h5>
+
+<div ngbAccordion [closeOthers]="true">
+	@for (item of items; track item) {
+		<div ngbAccordionItem [collapsed]="item.name !== 'First'">
+			<h2 ngbAccordionHeader>
+				<button ngbAccordionButton>{{ item.name }}</button>
+			</h2>
+			<div ngbAccordionCollapse>
+				<div ngbAccordionBody>
+					<ng-template>
+						{{item.data}}
+					</ng-template>
+				</div>
+			</div>
+		</div>
+	}
+</div>

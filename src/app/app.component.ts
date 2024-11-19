@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ExpandCollapseComponent } from './components/expand-collapse/expand-collapse.component';
+import { TypeAheadComponent } from './components/type-ahead/type-ahead.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [ExpandCollapseComponent, TypeAheadComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
