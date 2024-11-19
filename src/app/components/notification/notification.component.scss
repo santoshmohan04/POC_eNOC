@@ -8,6 +8,8 @@
     width: 300px;
     max-height: 400px;
     overflow-y: auto;
+    left: 0 !important;
+    right: auto !important;
 }
 
 .dropdown-toggle::after{
