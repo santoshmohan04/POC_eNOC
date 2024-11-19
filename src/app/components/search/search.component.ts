@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { dataset } from '../../data/states'
 
 @Component({
   selector: 'app-search',
@@ -11,8 +12,10 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
+
   searchQuery = '';
   showAdvanced = false;
+  tableData: any = []
 
   // Advanced search filters
   filters = {
@@ -41,9 +44,8 @@ export class SearchComponent {
   }
 
   onSearch(): void {
-    console.log('Search Query:', this.searchQuery);
-    console.log('Advanced Filters:', this.filters);
+    this.tableData = this.searchQuery.trim() ? dataset.filter(item => item.category.toLocaleLowerCase().trim().includes( this.searchQuery.trim() )) : []
 
-    // Add logic to filter data based on searchQuery and filters
   }
+
 }
