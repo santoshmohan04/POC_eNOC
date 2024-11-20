@@ -24,8 +24,8 @@ export class SearchComponent {
   tableData = signal<any[]>([]);
   
 
-  @ViewChild('tablelist') private tabletemplate!:TemplateRef<string>;
-  @ViewChild('nodata') private nodatatemplate!:TemplateRef<string>;
+  @ViewChild('tablelist') private readonly tabletemplate!:TemplateRef<string>;
+  @ViewChild('nodata') private readonly nodatatemplate!:TemplateRef<string>;
 
   displaytemplate = signal<TemplateRef<string>>(this.nodatatemplate)
 
@@ -44,18 +44,9 @@ export class SearchComponent {
 
   constructor() {
     effect(() => {
-      const criteria = this.filters();
-      const searchQuery = this.searchQuery().toLowerCase().trim();
-      // Check if all filters and searchQuery are empty
-      const isFiltersEmpty =
-        !searchQuery &&
-        !criteria.category &&
-        !criteria.tags.length &&
-        !criteria.startDate &&
-        !criteria.endDate;
-
+      
       // Clear tableData if all filters and searchQuery are empty
-      if (isFiltersEmpty) {
+      if (this.isEmptyQuerries()) {
         this.tableData.set([]);
         this.displaytemplate.set(this.nodatatemplate)
         return;
@@ -77,10 +68,7 @@ export class SearchComponent {
     } else {
       this.selectedTags.push(tag);
     }
-    this.filters.update((val) => ({
-      ...val, // Spread the current values
-      tags: this.selectedTags, // Update the `tags` property
-    }));
+    this.filters.update((val) => ({ ...val, tags: this.selectedTags }));
   }
 
   clearFilter(): void {
@@ -91,36 +79,63 @@ export class SearchComponent {
       tags: [],
     });
     this.selectedTags = [];
+    this.multiSearch()
+    this.displaytemplate.set(this.tabletemplate);
+  }
+
+  isEmptyQuerries() {
+
+    const criteria = this.filters();
+    const searchQuery = this.searchQuery().toLowerCase().trim();
+
+    let isFiltersEmpty =
+    !searchQuery &&
+    !criteria.category &&
+    !criteria.tags.length &&
+    !criteria.startDate &&
+    !criteria.endDate;
+
+    return isFiltersEmpty; 
+
   }
 
   multiSearch(): void {
     const criteria = this.filters();
     const searchQuery = this.searchQuery().toLowerCase().trim();
 
+     if(this.isEmptyQuerries()){
+      this.tableData.set([])
+      return
+     } else {
+  
+    // Filter the dataset based on the criteria
     this.tableData.set(dataset.filter((item) => {
       const searchQueryMatch =
-        !searchQuery ||
-        item.category.toLowerCase().includes(searchQuery) ||
-        item.tags.some((tag) => tag.toLowerCase().includes(searchQuery));
-
+        searchQuery
+          ? (
+            item.category.toLowerCase().includes(searchQuery) ||
+            item.tags.some((tag) => tag.toLowerCase().includes(searchQuery))
+          )
+          : true;
+  
       const categoryMatch =
         !criteria.category ||
         item.category.toLowerCase() === criteria.category.toLowerCase();
-
+  
       const tagsMatch =
         !criteria.tags.length ||
         criteria.tags.every((tag: string) =>
           item.tags.some((t: string) => t.toLowerCase() === tag.toLowerCase())
         );
-
+  
       const startDateMatch =
         !criteria.startDate ||
         new Date(item.startDate) >= new Date(criteria.startDate);
-
+  
       const endDateMatch =
         !criteria.endDate ||
         new Date(item.endDate) <= new Date(criteria.endDate);
-
+  
       return (
         searchQueryMatch &&
         categoryMatch &&
@@ -129,5 +144,15 @@ export class SearchComponent {
         endDateMatch
       );
     }));
+
   }
+  
+    // If no results, set "No Data" template
+    if (this.tableData().length === 0) {
+      this.displaytemplate.set(this.nodatatemplate);
+    } else {
+      this.displaytemplate.set(this.tabletemplate);
+    }
+  }
+  
 }
