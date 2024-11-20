@@ -8,7 +8,7 @@ import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss'],
-  imports: [CommonModule, NgbPopoverModule]
+  imports: [CommonModule, NgbPopoverModule],
 })
 export class FileUploadComponent {
   @Input() allowedFileTypes:string[] = []; // E.g., ".png,.jpg,.jpeg,.pdf"

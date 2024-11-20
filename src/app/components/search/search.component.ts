@@ -25,7 +25,7 @@ export class SearchComponent {
   
 
   @ViewChild('tablelist') private readonly tabletemplate!:TemplateRef<string>;
-  @ViewChild('nodata') private readonly nodatatemplate!:TemplateRef<string>;
+  @ViewChild('nodata') public readonly nodatatemplate!:TemplateRef<string>;
 
   displaytemplate = signal<TemplateRef<string>>(this.nodatatemplate)
 

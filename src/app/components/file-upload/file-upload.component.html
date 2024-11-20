@@ -1,26 +1,18 @@
 <div class="file-upload">
   <div class="d-flex">
     <h5>Upload File</h5>
-    <span
-      placement="end"
-      [ngbPopover]="getAllowedFormatsDisplay()"
-      triggers="mouseenter:mouseleave"
-      popoverTitle="Allowed File Types"
-    >
+    <span placement="end" [ngbPopover]="popContent" triggers="mouseenter:mouseleave" popoverTitle="Allowed File Types">
       <i class="bi bi-info-circle"></i>
     </span>
   </div>
   <label for="fileInput" class="upload-label">
-    <input
-      type="file"
-      id="fileInput"
-      (change)="handleFileInput($event)"
-      [multiple]="allowMultiple"
-      [attr.accept]="allowedFileTypes.join(',')"
-      hidden
-    />
+    <input type="file" id="fileInput" (change)="handleFileInput($event)" [multiple]="allowMultiple"
+      [attr.accept]="allowedFileTypes.join(',')" hidden />
     <button type="button" (click)="triggerFileInput()">Choose File(s)</button>
   </label>
+  <ng-template #popContent>
+    <p>{{ getAllowedFormatsDisplay() }}</p>
+  </ng-template>
 
   <!-- Custom label to show file names -->
   <span *ngIf="uploadedFiles.length > 0; else noFileSelected">

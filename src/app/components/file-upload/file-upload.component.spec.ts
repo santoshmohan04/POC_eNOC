@@ -30,31 +30,48 @@ describe('FileUploadComponent', () => {
   });
 
   it('should handle file input and emit valid files', () => {
+    // Set allowed file types
+    component.allowedFileTypes = ['image/png', 'application/pdf'];
+  
     const mockFiles = [
       new File(['content'], 'file1.png', { type: 'image/png' }),
       new File(['content'], 'file2.pdf', { type: 'application/pdf' }),
-      new File(['content'], 'file3.txt', { type: 'text/plain' })
+      new File(['content'], 'file3.txt', { type: 'text/plain' }),
     ];
-
+  
+    // Spy on the EventEmitter and alert
     spyOn(component.filesChanged, 'emit');
-    spyOn(window, 'alert'); // To prevent actual alerts during tests
-
-    const inputElement = fixture.debugElement.query(By.css('#fileInput')).nativeElement;
+    spyOn(window, 'alert'); // Prevent real alerts during the test
+  
+    // Create a mock FileList
     const fileList = {
-      item: (index: number) => mockFiles[index],
-      ...mockFiles
+      length: mockFiles.length,
+      item(index: number) {
+        return mockFiles[index];
+      },
+      [0]: mockFiles[0],
+      [1]: mockFiles[1],
+      [2]: mockFiles[2],
     };
+  
+    // Get the input element and define the files property
+    const inputElement = fixture.debugElement.query(By.css('#fileInput')).nativeElement;
     Object.defineProperty(inputElement, 'files', { value: fileList });
-
+  
+    // Dispatch a change event
     const event = new Event('change');
     inputElement.dispatchEvent(event);
-
+  
+    // Trigger the file input handler
     component.handleFileInput(event);
-
-    expect(component.uploadedFiles).toEqual([mockFiles[0], mockFiles[1]]);
+  
+    // Check expectations
+    expect(component.uploadedFiles).toEqual([mockFiles[0], mockFiles[1]]); // Only valid files
     expect(component.filesChanged.emit).toHaveBeenCalledWith([mockFiles[0], mockFiles[1]]);
-    expect(window.alert).toHaveBeenCalledWith('File type not allowed: file3.txt. Please upload PNG, JPG, JPEG, or PDF files.');
-  });
+    expect(window.alert).toHaveBeenCalledWith(
+      'File type not allowed: file3.txt. Please upload PNG, JPG, JPEG, or PDF files.'
+    );
+  });  
 
   it('should clear uploaded files and emit empty array', () => {
     spyOn(component.filesChanged, 'emit');
@@ -91,39 +108,41 @@ describe('FileUploadComponent', () => {
   it('should validate files against allowed file types', () => {
     component.allowedFileTypes = ['image/png', 'application/pdf'];
   
+    // Create mock files
     const mockFiles = [
-      new File(['content'], 'file1.png', { type: 'image/png' }),
-      new File(['content'], 'file2.txt', { type: 'text/plain' })
+      new File(['content'], 'file1.png', { type: 'image/png' }), // Valid file
+      new File(['content'], 'file2.txt', { type: 'text/plain' }) // Invalid file
     ];
   
-    // Mock a FileList object
+    // Create a fake FileList
     const fileList = {
+      length: mockFiles.length,
       item: (index: number) => mockFiles[index],
-      ...mockFiles
+      [0]: mockFiles[0],
+      [1]: mockFiles[1],
     };
   
+    // Find the file input element
     const inputElement = fixture.debugElement.query(By.css('#fileInput')).nativeElement;
   
-    // Define the `files` property
+    // Mock the files property
     Object.defineProperty(inputElement, 'files', {
       value: fileList,
-      writable: false
+      writable: false,
     });
   
     spyOn(component.filesChanged, 'emit');
   
-    // Dispatch a change event
+    // Dispatch a change event on the file input
     const event = new Event('change');
     inputElement.dispatchEvent(event);
   
-    // Call the handler
+    // Call the method explicitly since DOM event might not directly invoke it
     component.handleFileInput(event);
   
     // Expectations
-    expect(component.uploadedFiles.length).toBe(1);
-    expect(component.uploadedFiles[0].name).toBe('file1.png'); // Only the valid file
+    expect(component.uploadedFiles.length).toBe(1); // Only one valid file
+    expect(component.uploadedFiles[0].name).toBe('file1.png'); // Valid file
     expect(component.filesChanged.emit).toHaveBeenCalledWith([mockFiles[0]]);
   });
-  
-
 });
