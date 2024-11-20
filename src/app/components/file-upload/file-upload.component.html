@@ -1,11 +1,24 @@
 <div class="file-upload">
-  <!-- Display allowed formats -->
-  <p class="accepted-formats">
-    Accepted formats: <strong>{{ getAllowedFormatsDisplay() }}</strong>
-  </p>
+  <div class="d-flex">
+    <h5>Upload File</h5>
+    <span
+      placement="end"
+      [ngbPopover]="getAllowedFormatsDisplay()"
+      triggers="mouseenter:mouseleave"
+      popoverTitle="Allowed File Types"
+    >
+      <i class="bi bi-info-circle"></i>
+    </span>
+  </div>
   <label for="fileInput" class="upload-label">
-    <input type="file" id="fileInput" (change)="handleFileInput($event)" [multiple]="allowMultiple"
-      [attr.accept]="allowedFileTypes.join(',')" hidden />
+    <input
+      type="file"
+      id="fileInput"
+      (change)="handleFileInput($event)"
+      [multiple]="allowMultiple"
+      [attr.accept]="allowedFileTypes.join(',')"
+      hidden
+    />
     <button type="button" (click)="triggerFileInput()">Choose File(s)</button>
   </label>
 

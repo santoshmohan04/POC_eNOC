@@ -1,17 +1,17 @@
 .notification-container {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .notification-dropdown {
-    width: 300px;
-    max-height: 400px;
-    overflow-y: auto;
-    left: 0 !important;
-    right: auto !important;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  left: auto !important;
+  right: 0 !important;
 }
 
-.dropdown-toggle::after{
-    display: none;
-    }
+.dropdown-toggle::after {
+  display: none;
+}

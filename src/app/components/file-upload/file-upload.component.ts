@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { fileFormats } from '../../data/states';
+import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   standalone: true,
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss'],
-  imports: [CommonModule]
+  imports: [CommonModule, NgbPopoverModule]
 })
 export class FileUploadComponent {
   @Input() allowedFileTypes:string[] = []; // E.g., ".png,.jpg,.jpeg,.pdf"
