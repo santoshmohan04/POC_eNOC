@@ -6,11 +6,12 @@ import { SearchComponent } from './components/search/search.component';
 import { fileFormats } from './data/states';
 import { NotificationComponent } from './components/notification/notification.component';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { LangTranslateComponent } from "./components/lang-translate/lang-translate.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FileUploadComponent, ExpandCollapseComponent, TypeAheadComponent, SearchComponent, NotificationComponent, NgbNavModule],
+  imports: [FileUploadComponent, ExpandCollapseComponent, TypeAheadComponent, SearchComponent, NotificationComponent, NgbNavModule, LangTranslateComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

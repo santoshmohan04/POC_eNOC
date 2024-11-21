@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="my-4 d-flex justify-content-end">
     <app-notification></app-notification>
   </div>
@@ -28,6 +28,12 @@
         <button ngbNavLink>Search</button>
         <ng-template ngbNavContent>
           <app-search />
+        </ng-template>
+      </ng-container>
+      <ng-container ngbNavItem="langtranslate">
+        <button ngbNavLink>Language Translate</button>
+        <ng-template ngbNavContent>
+          <app-lang-translate />
         </ng-template>
       </ng-container>
     </div>

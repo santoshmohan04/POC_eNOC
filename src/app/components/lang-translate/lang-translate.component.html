@@ -1,0 +1,108 @@
+<div class="wrapper">
+    <header>
+        <div class="container">
+            <div class="aove-nav">
+                <div>
+                    <img class="logo" src="https://img.logoipsum.com/330.svg" alt="logo" />
+                </div>
+                <div>
+                  <nav>
+                    <ul>
+                        <li 
+                            class="cursor-pointer" 
+                            [class.active]="currentLanguage === 'en'"
+                            (click)="switchLanguage('en')">
+                            English
+                        </li>
+                        <li 
+                            class="cursor-pointer" 
+                            [class.active]="currentLanguage === 'ar'"
+                            (click)="switchLanguage('ar')">
+                            Arabic
+                        </li>
+                    </ul>
+                </nav>
+                
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container" [class.rtl-direction] = "currentLanguage === 'ar'">
+        <div class="welcome-text">
+            <span>{{'welcome' | translate}}</span>
+            <h1>{{'portalTitle1' | translate}} <br /> {{'portalTitle2' | translate}}</h1>
+        </div>
+        <div>
+            <h2>{{'infoServicesTitle' | translate}}</h2>
+            <div class="all-services-cards">
+                <div>
+                    <div>
+                        <img src="https://images.pexels.com/photos/28525304/pexels-photo-28525304/free-photo-of-dramatic-coastal-cliffs-at-jeju-island-south-korea.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt='poster' />
+                    </div>
+                    <div class="services-info">
+                        <p>{{'service1Title' | translate}}</p>
+                        <span>
+                            {{'service1Description' | translate}}
+                        </span>
+                    </div>
+  
+                </div>
+                <div>
+                    <div>
+                        <img src="https://images.pexels.com/photos/12206301/pexels-photo-12206301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                            alt='poster' />
+                    </div>
+                    <div class="services-info">
+                        <p>{{'service2Title' | translate}}</p>
+                        <span>
+                            {{'service2Description' | translate}}
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <img src="https://images.pexels.com/videos/28377598/color-graded-hyperlapse-video-with-dji-mini-4-pro-28377598.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                            alt='poster' />
+                    </div>
+                    <div class="services-info">
+                        <p>{{'service3Title' | translate}}</p>
+                        <span>
+                            {{'service3Description' | translate}}
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <img src="https://images.pexels.com/photos/28949953/pexels-photo-28949953/free-photo-of-serene-beach-pathway-leading-to-ocean-view.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                            alt='poster' />
+                    </div>
+                    <div class="services-info">
+                        <p>{{'service4Title' | translate}}</p>
+                        <span>
+                            {{'service4Description' | translate}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p>{{'strategyDescription' | translate}}</p>
+        </div>
+        <div class="co-creation">
+            <h3>{{'coCreationTitle' | translate}}</h3>
+            <div class="content-section">
+                <div class="content-img">
+                    <img src="https://images.pexels.com/photos/931113/pexels-photo-931113.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt="poster" />
+                </div>
+                <div>
+                    <p>{{'coCreationParagraph1' | translate}}</p>
+                    <p>{{'coCreationParagraph2' | translate}}</p>
+                    <p>{{'coCreationParagraph3' | translate}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
