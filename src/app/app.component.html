@@ -2,14 +2,17 @@
   <div class="my-4 d-flex justify-content-end">
     <app-notification></app-notification>
   </div>
+  <div class="mt-5">
+    <button (click)="fetchData()">Fetch Data</button>
+  </div>
   <div class="d-flex">
     <div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills flex-column" orientation="vertical">
       <ng-container ngbNavItem="file-upload">
         <button ngbNavLink>File Upload</button>
         <ng-template ngbNavContent>
           <app-file-upload [allowedFileTypes]="file_formats" [allowMultiple]="true"
-          (filesChanged)="onFilesChanged($event)">
-        </app-file-upload>
+            (filesChanged)="onFilesChanged($event)">
+          </app-file-upload>
         </ng-template>
       </ng-container>
       <ng-container ngbNavItem="accordion">
@@ -37,7 +40,7 @@
         </ng-template>
       </ng-container>
     </div>
-  
+
     <div [ngbNavOutlet]="nav" class="ms-4"></div>
   </div>
 </div>

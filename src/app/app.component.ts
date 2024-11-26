@@ -7,6 +7,7 @@ import { fileFormats } from './data/states';
 import { NotificationComponent } from './components/notification/notification.component';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { LangTranslateComponent } from "./components/lang-translate/lang-translate.component";
+import { DatabaseService } from './sql-database.service';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,21 @@ export class AppComponent {
   title = 'enoc';
   file_formats = fileFormats;
   active = "file-upload";
+
+  constructor(private dbService: DatabaseService) { }
+
   onFilesChanged(files: File[]): void {
     console.log('Uploaded files:', files);
+  }
+
+  fetchData() {
+    const query = 'SELECT * FROM custinfo;';
+    this.dbService.executeQuery(query, (err, results) => {
+      if (err) {
+        console.error('Query error:', err);
+      } else {
+        console.log('Query results:', results);
+      }
+    });
   }
 }
