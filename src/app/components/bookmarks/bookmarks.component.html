@@ -1,0 +1,38 @@
+<button type="button" (click)="showBookmarkMenu(content)"><i class="bi bi-bookmark"></i></button>
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Bookmark added</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+    @if (!isBookmarkEdit) {
+	<div class="modal-body">
+		<p>This application is Saved to Bookmarked Applications</p>
+	</div>
+	<div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="editBookmark()">Edit</button>
+		<button type="button" class="btn btn-primary">Done</button>
+	</div>
+} @else {
+    <div class="modal-body">
+        <p>Add bookmark to existing folder or create new folder</p>
+        <div class="d-flex justify-content-between mt-3">
+            <p>Bookmark Folders</p>
+            <select class="form-select">
+                <option selected>All</option>
+                <option value="1">Folder 1</option>
+                <option value="2">Folder 2</option>
+                <option value="3">Folder 3</option>
+            </select>
+            <button type="button" class="btn btn-primary" (click)="isFolderName = true"><i class="bi bi-folder-plus"></i></button>
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <p>Folder Name</p>
+            <input type="text" class="form-control" placeholder="Enter Folder Name" [disabled]="!isFolderName">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Done</button>
+    </div>
+}
+</ng-template>
