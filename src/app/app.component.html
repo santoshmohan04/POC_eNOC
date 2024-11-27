@@ -8,8 +8,8 @@
         <button ngbNavLink>File Upload</button>
         <ng-template ngbNavContent>
           <app-file-upload [allowedFileTypes]="file_formats" [allowMultiple]="true"
-          (filesChanged)="onFilesChanged($event)">
-        </app-file-upload>
+            (filesChanged)="onFilesChanged($event)">
+          </app-file-upload>
         </ng-template>
       </ng-container>
       <ng-container ngbNavItem="accordion">
@@ -36,8 +36,20 @@
           <app-lang-translate />
         </ng-template>
       </ng-container>
+      <ng-container ngbNavItem="information-links">
+        <button ngbNavLink>Information Links</button>
+        <ng-template ngbNavContent>
+          <app-information-links />
+        </ng-template>
+      </ng-container>
+      <ng-container ngbNavItem="pdf-download">
+        <button ngbNavLink>PDF Download</button>
+        <ng-template ngbNavContent>
+          <app-pdf />
+        </ng-template>
+      </ng-container>
     </div>
-  
+
     <div [ngbNavOutlet]="nav" class="ms-4"></div>
   </div>
 </div>
