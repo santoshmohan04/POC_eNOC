@@ -7,11 +7,13 @@ import { fileFormats } from './data/states';
 import { NotificationComponent } from './components/notification/notification.component';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { LangTranslateComponent } from "./components/lang-translate/lang-translate.component";
+import { ApplicationStatusComponent } from './components/application-status/application-status.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FileUploadComponent, ExpandCollapseComponent, TypeAheadComponent, SearchComponent, NotificationComponent, NgbNavModule, LangTranslateComponent],
+  imports: [FileUploadComponent, ExpandCollapseComponent, TypeAheadComponent, SearchComponent, NotificationComponent, NgbNavModule,
+     LangTranslateComponent, ApplicationStatusComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
