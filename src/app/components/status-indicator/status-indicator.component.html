@@ -1,0 +1,31 @@
+<div class="status-indicator-wrapper">
+    <div class="d-flex status-stages">
+        <span class="status-stage" *ngFor="let item of progressdetails; let i = index" [ngClass]="{
+                'active-stage': item.step <= currentStep,
+                'inactive-stage': item.step > currentStep
+            }" [style.background-color]="item.step <= currentStep ? getProgressBarColor(item.step) : '#e6ebf1'">
+            <span class="stage-number" [ngClass]="item.step === currentStep ? 'current-stage' : ''"
+                [style.background-color]="item.step === currentStep ? getProgressBarColor(item.step) : '#fff'">
+                <span>{{ item.step }}</span>
+
+                <ng-container *ngIf="item.step === currentStep">
+                    <!-- Icon for step 2 -->
+                    <span *ngIf="item.step <= 2">
+                        <img src="assets/icons/comments-icon.svg" class="status-icon" alt="Comment Icon" />
+                    </span>
+                    
+                    <!-- Icon for step 3 -->
+                    <span *ngIf="item.step === 3">
+                        <img src="assets/icons/check-icon.svg" class="status-icon" alt="Comment Icon" />
+                    </span>
+
+                    <!-- Icon for step 4 -->
+                    <span *ngIf="item.step >= 4">
+                        <img src="assets/icons/processing-icon.svg" class="status-icon" alt="Processing Icon" />
+                    </span>
+                </ng-container>
+            </span>
+            <div class="bottom-triangle" [style.border-top-color]="item.step === currentStep ? getProgressBarColor(item.step) : '#fff'"></div>
+        </span>
+    </div>
+</div>

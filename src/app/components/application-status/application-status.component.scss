@@ -1,0 +1,72 @@
+.containerDiv{
+    border: 1px solid rgb(233, 221, 221);
+    margin: 0 auto;
+    width: 800px;
+}
+
+.headerDiv {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(246, 246, 246);
+}
+
+.statusText {
+    min-height: 50px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.statusDiv{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    margin: 20px;
+    box-shadow: 5px 5px  aliceblue;
+    border: 1px solid aliceblue;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: aliceblue;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.tableHeaderPtag {
+    padding-left: 30px;
+    font-weight: 1900;
+    color: rgb(35, 7, 60);
+}
+
+.tableDiv{
+    padding-left: 30px;
+    height: 300px;
+    overflow: scroll;
+}
+
+.table {
+    width: 100%;
+}
+
+.th{
+    color: rgb(37, 39, 148);
+    background-color:  rgb(218, 224, 230);
+}
+
+table td:first-child {
+    color:rgb(37, 39, 148);
+}
+
+.bottomClosebtn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottomClosebtn button{
+    border: 1px solid  rgb(16, 16, 124);
+    border-radius: 5px;
+    color: rgb(16, 16, 124);
+    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
