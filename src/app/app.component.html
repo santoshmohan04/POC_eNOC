@@ -36,6 +36,12 @@
           <app-lang-translate />
         </ng-template>
       </ng-container>
+      <ng-container ngbNavItem="statusIndicator">
+        <button ngbNavLink>Status Indicator</button>
+        <ng-template ngbNavContent>
+          <app-status-indicator />
+        </ng-template>
+      </ng-container>
     </div>
   
     <div [ngbNavOutlet]="nav" class="ms-4"></div>

@@ -1,0 +1,29 @@
+<div class="status-indicator-wrapper">
+    <div class="d-flex status-stages">
+        @for(item of progressdetails; track $index){
+            <span class="status-stage">
+                <span [ngClass]="item.step === 3 ? 'active-stage' : ''">{{item.step}} @if(item.step === 3){
+                    <i class="bi bi-check2-circle"></i>}</span>
+            </span>
+        }
+    </div>
+    <ngb-progressbar-stacked>
+        @for(item of progressdetails; track $index){
+            <ngb-progressbar 
+            [ngClass]="getProgressBarClass(item.value)" 
+            [value]="item.value"
+            [striped]="true" 
+            [animated]="true">
+        </ngb-progressbar>
+        }
+        
+
+        <!-- <ngb-progressbar  customClass="custom-danger" [value]="14.8"> </ngb-progressbar>
+        <ngb-progressbar type="warning" customClass="custom-danger" [value]="14.8"> </ngb-progressbar>
+        <ngb-progressbar type="success" customClass="custom-danger" [value]="14.8"> </ngb-progressbar>
+        <ngb-progressbar  customClass="custom-danger" [value]="14.8"> </ngb-progressbar>
+        <ngb-progressbar type="warning" customClass="custom-danger" [value]="14.8"> </ngb-progressbar>
+        <ngb-progressbar type="success" customClass="custom-danger" [value]="14.8"> </ngb-progressbar>
+        <ngb-progressbar  [ngStyle]="{'background-color': progressColor}" customClass="custom-danger" [value]="14.8"> </ngb-progressbar> -->
+    </ngb-progressbar-stacked>
+</div>

@@ -1,0 +1,69 @@
+.status-indicator-wrapper {
+    .progress-stacked {
+        background-color: transparent;
+        overflow: visible;
+    }
+
+    .progress {
+        margin: 0 15px;
+        overflow: hidden;
+        border-radius: 30px;
+    }
+
+    .status-stages {
+        margin: 0px 0 10px 0;
+    }
+
+    .status-stages>.status-stage {
+        margin: 0 15px;
+        flex: 1 14.8%;
+        max-width: 14.8%;
+        text-align: center;
+        color: black;
+        font-weight: 500;
+        font-size: 14px;
+    }
+}
+
+.status-stages {
+    .active-stage {
+        background-color: #00b154;
+        display: inline-block;
+        padding: 3px 8px;
+        color: white;
+        border-radius: 3px;
+
+
+        .bi-check2-circle {
+            font-size: 12px;
+        }
+    }
+
+    .custom-danger {
+        background-color: #e6ebf1;
+    }
+
+
+}
+
+.active-stage::before {
+    content: '';
+
+}
+
+.custom-danger {
+    background-color: transparent !important;
+}
+
+.bg-danger-custom {
+    background-color: #ff4d4d !important; /* Light red */
+  }
+  
+  .bg-warning-custom {
+    background-color: #ffc107 !important; /* Light yellow */
+  }
+  
+  .bg-success-custom {
+    background-color: #28a745 !important; /* Light green */
+  }
+  
