@@ -42,6 +42,19 @@
           <app-status-indicator />
         </ng-template>
       </ng-container>
+      <ng-container ngbNavItem="bookmark">
+        <button ngbNavLink>Bookmark</button>
+        <ng-template ngbNavContent>
+          <app-bookmarks />
+        </ng-template>
+      </ng-container>
+      <ng-container ngbNavItem="applicationStatus">
+        <button ngbNavLink> Application Status </button>
+        <ng-template ngbNavContent>
+          <app-application-status />
+        </ng-template>
+      </ng-container>
+        
     </div>
   
     <div [ngbNavOutlet]="nav" class="ms-4"></div>
