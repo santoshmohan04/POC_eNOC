@@ -11,28 +11,25 @@
 	</div>
 	<div class="modal-footer">
         <button type="button" class="btn btn-outline" (click)="editBookmark()">Edit</button>
-		<button type="button" class="btn btn-primary">Done</button>
+		<button type="button" class="btn btn-primary" >Done</button>
 	</div>
 } @else {
     <div class="modal-body">
         <p>Add bookmark to existing folder or create new folder</p>
         <div class="d-flex justify-content-between mt-3">
             <p>Bookmark Folders</p>
-            <select class="form-select">
-                <option selected>All</option>
-                <option value="1">Folder 1</option>
-                <option value="2">Folder 2</option>
-                <option value="3">Folder 3</option>
+            <select class="form-select" (change)="onChangeSelector($event)" >
+                <option *ngFor="let item of cratedFolder" [value]="item.value" > {{ item.name }} </option>
             </select>
             <button type="button" class="btn btn-primary" (click)="isFolderName = true"><i class="bi bi-folder-plus"></i></button>
         </div>
         <div class="d-flex justify-content-between mt-3">
             <p>Folder Name</p>
-            <input type="text" class="form-control" placeholder="Enter Folder Name" [disabled]="!isFolderName">
+            <input type="text" class="form-control" placeholder="Enter Folder Name" [(ngModel)]="inputFolder" (ngModelChange)="cratedFolderChanges($event)" [disabled]="!isFolderName">
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Done</button>
+        <button type="button" class="btn btn-primary"  [disabled]="selectedValue().trim() === 'All' && inputFolder == ''" (click)="doneClickHandler()" >Done</button>
     </div>
 }
 </ng-template>
