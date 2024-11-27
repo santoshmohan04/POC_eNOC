@@ -8,11 +8,13 @@ import { NotificationComponent } from './components/notification/notification.co
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { LangTranslateComponent } from "./components/lang-translate/lang-translate.component";
 import { BookmarksComponent } from './components/bookmarks/bookmarks.component';
+import { ApplicationStatusComponent } from './components/application-status/application-status.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FileUploadComponent, ExpandCollapseComponent, TypeAheadComponent, SearchComponent, NotificationComponent, NgbNavModule, LangTranslateComponent, BookmarksComponent],
+  imports: [FileUploadComponent, ExpandCollapseComponent, TypeAheadComponent, SearchComponent, NotificationComponent, NgbNavModule,
+     LangTranslateComponent, ApplicationStatusComponent, BookmarksComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
