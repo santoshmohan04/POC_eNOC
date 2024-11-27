@@ -1,36 +1,52 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-status-indicator',
   standalone: true,
-  imports: [NgbProgressbarModule, CommonModule],
-  encapsulation: ViewEncapsulation.None,
+  imports: [CommonModule, NgbProgressbarModule],
   templateUrl: './status-indicator.component.html',
-  styleUrl: './status-indicator.component.scss'
+  styleUrls: ['./status-indicator.component.scss'],
 })
 export class StatusIndicatorComponent {
-  progressdetails = [{step:1, value: 14.8}, {step:2, value: 28.56}, {step:3, value: 14.8}, {step:4, value: 14.8}, {step:5, value: 14.8}, {step:6, value: 14.8}, {step:7, value: 14.8}]
-  progressValue = 50;
-  get progressColor(): string {
-    if (this.progressValue < 30) {
-      return '#ff4d4d'; // Light red
-    } else if (this.progressValue < 70) {
-      return '#ffcc00'; // Yellow
+  progressdetails = [
+    { step: 1, value: 14.8 },
+    { step: 2, value: 28.56 },
+    { step: 3, value: 44.4 },
+    { step: 4, value: 59.2 },
+    { step: 5, value: 73.2 },
+    { step: 6, value: 88 },
+    { step: 7, value: 100 },
+  ];
+
+  currentStep = 7;
+
+
+  getProgressBarColor(step: number): string {
+    // Get the value for the current step
+    const currentValue = this.progressdetails.find(item => item.step === this.currentStep)?.value || 0;
+
+    // Get the value for the current step being iterated
+    const stepValue = this.progressdetails.find(item => item.step === step)?.value || 0;
+
+    // Determine the color based on the step value
+    if (stepValue <= currentValue) {
+      if (currentValue <= 44) {
+        return '#9FE1BE';
+      }
+      else if (currentValue <= 59) {
+        return '#00b154';
+      }
+      else if (currentValue <= 88) {
+        return '#fdb62b';
+      }
+      else {
+        return '#e51a1a';
+      }
     } else {
-      return '#4caf50'; // Green
+      return '#e6ebf1'; // Default (inactive) color
     }
   }
 
-  getProgressBarClass(value: number): string {
-    if (value < 30) {
-      return 'bg-danger-custom';
-    } else if (value < 70) {
-      return 'bg-warning-custom';
-    } else {
-      return 'bg-success-custom';
-    }
-  }
-  
 }
