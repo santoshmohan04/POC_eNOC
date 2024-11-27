@@ -2,9 +2,17 @@
   <div class="my-4 d-flex justify-content-end">
     <app-notification></app-notification>
   </div>
-  <div class="mt-5">
-    <button (click)="fetchData()">Fetch Data</button>
+  <div class="mt-1">
+    <app-common-alert [title]="'Success'" [content]="'This is Sample Re-Usable Alert'"
+      [alertType]="'alert-success'"></app-common-alert>
   </div>
+  <div class="mt-1">
+    <app-common-alert [title]="'Error'" [content]="'This is Sample Re-Usable Alert'"
+      [alertType]="'alert-danger'"></app-common-alert>
+  </div>
+  <!-- <div class="mt-5">
+    <button (click)="fetchData()">Fetch Data</button>
+  </div> -->
   <div class="d-flex">
     <div ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills flex-column" orientation="vertical">
       <ng-container ngbNavItem="file-upload">
@@ -13,6 +21,28 @@
           <app-file-upload [allowedFileTypes]="file_formats" [allowMultiple]="true"
             (filesChanged)="onFilesChanged($event)">
           </app-file-upload>
+        </ng-template>
+      </ng-container>
+      <ng-container ngbNavItem="Re-Usable">
+        <button ngbNavLink>Reusable Card</button>
+        <ng-template ngbNavContent>
+          <div class="row">
+            <div class="col-3 p-2 m-4" *ngFor="let item of cardData; let index = index">
+              <app-common-card [cardData]="item"></app-common-card>
+            </div>
+          </div>
+
+        </ng-template>
+      </ng-container>
+      <ng-container ngbNavItem="Custom-Table">
+        <button ngbNavLink>Custom Table</button>
+        <ng-template ngbNavContent>
+          <div class="row">
+            <div class="col-3 p-2 m-4">
+              <app-common-table [custData]="customTableData"></app-common-table>
+            </div>
+          </div>
+
         </ng-template>
       </ng-container>
       <ng-container ngbNavItem="accordion">

@@ -1,0 +1,10 @@
+<div class="card custom-card-container">
+    <div class="card-body custom-card-body">
+        <h5 class="card-title custom-card-title">{{cardData.title}}</h5>
+        <h6 class="card-subtitle mb-2 custom-card-subtitle">{{cardData.subtitle}}</h6>
+    </div>
+</div>
+
+<div>
+    <app-common-button title="Save" [btnClass]="'btn-sm btn-warning'" (onBtnClick)="onSave($event)"  ></app-common-button>
+</div>
