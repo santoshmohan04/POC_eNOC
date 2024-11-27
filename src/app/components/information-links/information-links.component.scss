@@ -1,0 +1,39 @@
+.info-link-title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.info-title-img {
+    padding-right: 5px;
+}
+.info-link-img{
+    padding-right: 15px;
+}
+
+.info-title {
+    font-size: 20px;
+    color: #172B4D;
+    font-weight: 500;
+    line-height: 30px;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.info-link-links {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.info-col-link {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.info-link-text {
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: underline;
+
+}

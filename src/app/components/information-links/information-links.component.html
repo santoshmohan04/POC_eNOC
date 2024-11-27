@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="info-link-title">
+                <img class="info-title-img" src="../../../assets/images/information.svg" alt="Loading.." />
+                <h6 class="info-title"> Information links </h6>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col info-link-title">
+            @for(item of infoData; track item){
+            <div class="info-col-link">
+                <img class="info-link-img" src={{item.icon}} alt="Loading.." />
+                <span class="info-link-text"> {{item.title}} <img (click)="navigate()" src={{item.arrowIcon}} alt="" />
+                </span>
+            </div>
+            }
+        </div>
+    </div>
+</div>

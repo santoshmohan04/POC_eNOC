@@ -7,14 +7,17 @@ import { fileFormats } from './data/states';
 import { NotificationComponent } from './components/notification/notification.component';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { LangTranslateComponent } from "./components/lang-translate/lang-translate.component";
+import { InformationLinksComponent } from './components/information-links/information-links.component';
+import { PdfComponent } from './components/pdf/pdf.component';
+import { StatusIndicatorComponent } from './components/status-indicator/status-indicator.component';
 import { BookmarksComponent } from './components/bookmarks/bookmarks.component';
 import { ApplicationStatusComponent } from './components/application-status/application-status.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FileUploadComponent, ExpandCollapseComponent, TypeAheadComponent, SearchComponent, NotificationComponent, NgbNavModule,
-     LangTranslateComponent, ApplicationStatusComponent, BookmarksComponent],
+  imports: [FileUploadComponent, PdfComponent, InformationLinksComponent, ExpandCollapseComponent, TypeAheadComponent, SearchComponent, NotificationComponent, NgbNavModule,
+    LangTranslateComponent, ApplicationStatusComponent, BookmarksComponent, StatusIndicatorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
